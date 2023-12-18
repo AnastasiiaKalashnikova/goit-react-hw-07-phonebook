@@ -2,7 +2,7 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import { AddBtn, StyledForm } from './AddForm.styled';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/operations';
 import { selectContacts } from '../../redux/selector';
 
 const Schema = Yup.object().shape({
@@ -19,12 +19,12 @@ export const AddForm = () => {
       initialValues={{ name: '', number: '' }}
       validationSchema={Schema}
       onSubmit={(value, actions) => {
-        if (
-          contacts.find(
-            contact =>
-              contact.text.name.toLowerCase() === value.name.toLowerCase()
-          )
-        ) {
+        // if (
+        //  contacts.find(
+        //    contact => contact.name.toLowerCase() === value.name.toLowerCase()
+        //   )
+        //)
+        {
           return alert(`${value.name} is already in contacts`);
         }
         dispatch(addContact(value));
