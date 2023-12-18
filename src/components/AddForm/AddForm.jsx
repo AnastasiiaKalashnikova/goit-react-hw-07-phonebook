@@ -19,12 +19,11 @@ export const AddForm = () => {
       initialValues={{ name: '', number: '' }}
       validationSchema={Schema}
       onSubmit={(value, actions) => {
-        // if (
-        //  contacts.find(
-        //    contact => contact.name.toLowerCase() === value.name.toLowerCase()
-        //   )
-        //)
-        {
+        if (
+          contacts.find(
+            contact => contact.name.toLowerCase() === value.name.toLowerCase()
+          )
+        ) {
           return alert(`${value.name} is already in contacts`);
         }
         dispatch(addContact(value));
